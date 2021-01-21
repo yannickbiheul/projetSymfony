@@ -3,11 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-
+        {% block stylesheets %}
+            <link rel="stylesheet" href="../public/style.css">
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </head>
+
     <body>
+    
         {% block monTitre %}{% endblock %}
         {% block body %}{% endblock %}
     </body>
