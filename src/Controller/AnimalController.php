@@ -12,15 +12,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class AnimalController extends AbstractController
 {
     /**
-     * @Route("/", name="animaux")
+     * @Route("/", name="animal")
      */
     public function index(AnimalRepository $repository)
     {
         $animaux = $repository->findAll();
-        //print_r($animaux);
-        //die();
         return $this->render('animal/index.html.twig', [
             'animaux' => $animaux
+        ]);
+    }
+
+    /**
+     * @Route("/animal/{id}", name="afficher_animal")
+     */
+    public function afficherAnimal(AnimalRepository $repository, $id)
+    {
+        $unAnimal = $repository->find($id);
+        return $this->render('animal/afficherAnimal.html.twig', [
+            'animal' => $unAnimal
         ]);
     }
 }

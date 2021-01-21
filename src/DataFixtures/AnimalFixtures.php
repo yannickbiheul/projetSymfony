@@ -15,13 +15,13 @@ class AnimalFixtures extends Fixture
         // $manager->persist($product);
 
         $a1 = new Animal();
-        $a1->setColor('black')->setNom('horse')->setFamille('mamif');
+        $a1->setColor('black')->setNom('horse')->setFamille('mamif')->setPoids(125);
         $manager->persist($a1);
 
         $a2 = new Animal();
-        $a2->setColor('blue')->setNom('cow')->setFamille('mamif');
+        $a2->setColor('blue')->setNom('cow')->setFamille('mamif')->setPoids(185);
         $manager->persist($a2);
-
+        
         $manager->flush();
     }
 }

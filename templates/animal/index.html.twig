@@ -2,13 +2,12 @@
 
 {% block title %}Page d'accueil{% endblock %}
 
-{% block monTitre %} Voici la liste des animaux {% endblock %}
+{% block monTitre %} <h1>Voici la liste des animaux</h1> {% endblock %}
 
 {% block body %}
+    <ul>
     {% for animal in animaux %}
-        <div class="row align-items-center">
-            <div class="col-auto">
-                <h2>{{ animal.nom }}</h2>
-            </div>
+        <li><a href="{{ path('afficher_animal', {'id':animal.id}) }}">{{ animal.nom }}</a>, animal n°{{ animal.id }}.</li>
     {% endfor %}
+    </ul>
 {% endblock %}

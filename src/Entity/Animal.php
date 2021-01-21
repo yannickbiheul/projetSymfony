@@ -32,6 +32,11 @@ class Animal
      */
     private $famille;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $poids;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Animal
     public function setFamille(?string $famille): self
     {
         $this->famille = $famille;
+
+        return $this;
+    }
+
+    public function getPoids(): ?int
+    {
+        return $this->poids;
+    }
+
+    public function setPoids(?int $poids): self
+    {
+        $this->poids = $poids;
 
         return $this;
     }
