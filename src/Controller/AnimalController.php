@@ -32,4 +32,15 @@ class AnimalController extends AbstractController
             'animal' => $unAnimal
         ]);
     }
+
+    /**
+     * @Route("/animal/{poids}", name="animauxLegers")
+     */
+    public function getAnimalLeger(AnimalRepository $repo, $poids) {
+        $animaux = $repo->getAnimauxLegers($poids);
+            return $this->render('animal/animauxLegers.html.twig', [
+                'animaux' => $animaux
+        ]);
+        
+    }
 }

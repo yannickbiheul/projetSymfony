@@ -19,6 +19,14 @@ class AnimalRepository extends ServiceEntityRepository
         parent::__construct($registry, Animal::class);
     }
 
+    public function getAnimauxLegers($poids) {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.poids < :val')
+            ->setParameter('val', $poids)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Animal[] Returns an array of Animal objects
     //  */
