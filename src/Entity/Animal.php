@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AnimalRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +44,18 @@ class Animal
      * @ORM\JoinColumn(nullable=false)
      */
     private $espece;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Dispose::class, mappedBy="animal")
+     */
+    private $disposes;
+
+   
+
+    public function __construct()
+    {
+        $this->disposes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -107,4 +121,36 @@ class Animal
 
         return $this;
     }
+
+    /**
+     * @return Collection|Dispose[]
+     */
+    public function getDisposes(): Collection
+    {
+        return $this->disposes;
+    }
+
+    public function addDispose(Dispose $dispose): self
+    {
+        if (!$this->disposes->contains($dispose)) {
+            $this->disposes[] = $dispose;
+            $dispose->setAnimal($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDispose(Dispose $dispose): self
+    {
+        if ($this->disposes->removeElement($dispose)) {
+            // set the owning side to null (unless already changed)
+            if ($dispose->getAnimal() === $this) {
+                $dispose->setAnimal(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 }
