@@ -10,16 +10,19 @@
 
 <div class="example-wrapper">
     {% for personne in personnes %}
-        <h2><a href="{{ path('afficher_personne', {'id':personne.id})}}"></a></h2>
+        <h2>{{ personne.nom }}</h2>
         <h3>Liste des animaux possédés : </h3>
         {% for dispose in personne.disposes %}
+            <li>{{ dispose.animal.nom }}</Li>
             <div>
-                <img src="{{ asset('images/' ~ dispose.animal.image)}}">
+                {# <img src="{{ asset('images/' ~ dispose.animal.image)}}"> #}
             </div>
-            <h2><a href="{{ path('afficher_personne', {'id':dispose.animal.id})}}"></a></h2>
-            <p>Nombre : {{ dispose.nb }}</p>
+            {# <h2><a href="{{ path('afficher_personne', {'id':dispose.animal.id})}}"></a></h2> #}
+            <p>Nombre : {{ dispose.nombre }}</p>
         {% endfor %}
     {% endfor %}
+
+    <a href="{{ path('animal') }}">Retour à la liste des animaux</a>
 </div>
 
 {% endblock %}

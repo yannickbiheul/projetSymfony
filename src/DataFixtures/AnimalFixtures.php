@@ -26,15 +26,15 @@ class AnimalFixtures extends Fixture
         $manager->persist($e2);
 
         $a1 = new Animal();
-        $a1->setColor('black')->setNom('horse')->setFamille('mamif')->setPoids(125)->setEspece($e1);
+        $a1->setColor('black')->setNom('Cheval Fou')->setFamille('mamif')->setPoids(125)->setEspece($e1);
         $manager->persist($a1);
 
         $a2 = new Animal();
-        $a2->setColor('blue')->setNom('cow')->setFamille('mamif')->setPoids(185)->setEspece($e1);
+        $a2->setColor('blue')->setNom('Vache Folle')->setFamille('mamif')->setPoids(185)->setEspece($e1);
         $manager->persist($a2);
 
         $a3 = new Animal();
-        $a3->setColor('grey')->setNom('poissonChat')->setFamille('poisson')->setPoids(15)->setEspece($e2);
+        $a3->setColor('grey')->setNom('Loutre Idiote')->setFamille('poisson')->setPoids(15)->setEspece($e2);
         $manager->persist($a3);
 
         $p1 = new Personne();
@@ -50,6 +50,12 @@ class AnimalFixtures extends Fixture
             ->setAnimal($a1)
             ->setNombre(10);
         $manager->persist($d1);
+
+        $d2 = new Dispose();
+        $d2->setPersonne($p2)
+            ->setAnimal($a3)
+            ->setNombre(5);
+        $manager->persist($d2);
         
         $manager->flush();
     }

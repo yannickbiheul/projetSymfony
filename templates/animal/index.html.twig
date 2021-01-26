@@ -9,11 +9,13 @@
     <ul>
     {% for animal in animaux %}
         <li><a href="{{ path('afficher_animal', {'id':animal.id}) }}">{{ animal.nom }}</a>, animal n°{{ animal.id }}.</li>
+        {% for dispose in animal.disposes %}
+            {{ dispose.personne.nom }}
+        {% endfor %}
     {% endfor %}
     </ul>
 
-    {# {% for dispose in animaux.disposes %}
-        {{ dispose.personne.nom }}
-    {% endfor %} #}
+    <a href="{{ path('personne') }}">Personnes</a>
+    
     
 {% endblock %}

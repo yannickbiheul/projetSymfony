@@ -17,6 +17,6 @@ class EspeceController extends AbstractController
         $especes = $repository->findAll();
         return $this->render('espece/index.html.twig', [
             'especes' => $especes
-        ]);
+        ]);  
     }
 }

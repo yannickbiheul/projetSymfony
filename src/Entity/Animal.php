@@ -34,14 +34,16 @@ class Animal
      */
     private $famille;
 
+    // @Assert\Length(min=2,max=20) permet de donner des limites aux entrées de l'utilisateur dans les inputs.
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Length(min=2,max=20)
      */
     private $poids;
 
     /**
      * @ORM\ManyToOne(targetEntity=Espece::class, inversedBy="animaux")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false) 
      */
     private $espece;
 
