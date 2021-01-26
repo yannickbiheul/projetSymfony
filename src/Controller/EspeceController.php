@@ -11,7 +11,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EspeceController extends AbstractController
 {
-    #[Route('/espece', name: 'espece')]
+    /**
+     * @Route("/espece", name="espece")
+     */
     public function index(EspeceRepository $repository)
     {
         $especes = $repository->findAll();
